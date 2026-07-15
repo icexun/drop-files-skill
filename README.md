@@ -8,7 +8,7 @@
 
 ## English
 
-A [TRAE](https://trae.ai/) skill that uploads generated HTML or Markdown content to the DropFiles service and returns a public shareable link. The service is free, globally accessible, and hosted on Cloudflare's edge network.
+An AI agent skill (compatible with [TRAE](https://trae.ai/), Claude, Cursor, and any agent that loads the `SKILL.md` frontmatter convention) that uploads generated HTML or Markdown content to the DropFiles service and returns a public shareable link. The service is free, globally accessible, and hosted on Cloudflare's edge network.
 
 ### Features
 
@@ -23,7 +23,7 @@ A [TRAE](https://trae.ai/) skill that uploads generated HTML or Markdown content
 
 ### Installation
 
-Copy the `SKILL.md` file into your TRAE skill directory, or clone this repository and reference it from your TRAE workspace.
+Copy the `SKILL.md` file into your agent's skill directory, or clone this repository and reference it from your workspace. Works with any agent that supports the `SKILL.md` frontmatter convention (TRAE, Claude, Cursor, etc.).
 
 ```bash
 git clone https://github.com/icexun/drop-files-skill.git
@@ -31,7 +31,7 @@ git clone https://github.com/icexun/drop-files-skill.git
 
 ### Usage
 
-Invoke this skill in TRAE whenever you want to:
+Invoke this skill whenever you want to:
 
 - Share generated HTML or Markdown content via a public link
 - Publish a document, report, or page and get a URL to distribute
@@ -172,7 +172,7 @@ MIT
 
 ## 中文
 
-一个 [TRAE](https://trae.ai/) 技能，用于将生成的 HTML 或 Markdown 内容上传到 DropFiles 服务，并返回一个公开可访问的分享链接。该服务免费、全球可访问，并托管在 Cloudflare 的边缘网络上。
+一个 AI agent 技能（兼容 [TRAE](https://trae.ai/)、Claude、Cursor 等任何支持 `SKILL.md` frontmatter 约定的 agent），用于将生成的 HTML 或 Markdown 内容上传到 DropFiles 服务，并返回一个公开可访问的分享链接。该服务免费、全球可访问，并托管在 Cloudflare 的边缘网络上。
 
 ### 功能特性
 
@@ -187,7 +187,7 @@ MIT
 
 ### 安装
 
-将 `SKILL.md` 文件复制到你的 TRAE 技能目录，或克隆本仓库并在 TRAE 工作区中引用。
+将 `SKILL.md` 文件复制到你的 agent 技能目录，或克隆本仓库并在工作区中引用。兼容任何支持 `SKILL.md` frontmatter 约定的 agent（TRAE、Claude、Cursor 等）。
 
 ```bash
 git clone https://github.com/icexun/drop-files-skill.git
@@ -195,7 +195,7 @@ git clone https://github.com/icexun/drop-files-skill.git
 
 ### 使用方法
 
-在 TRAE 中遇到以下场景时调用此技能：
+遇到以下场景时调用此技能：
 
 - 通过公开链接分享生成的 HTML 或 Markdown 内容
 - 发布文档、报告或页面，并获取可分发的 URL
