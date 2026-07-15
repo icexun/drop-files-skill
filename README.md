@@ -10,6 +10,12 @@
 
 An AI agent skill (compatible with [TRAE](https://trae.ai/), Claude, Cursor, and any agent that loads the `SKILL.md` frontmatter convention) that uploads generated HTML or Markdown content to the DropFiles service and returns a public shareable link. The service is free, globally accessible, and hosted on Cloudflare's edge network.
 
+### Web Interface
+
+Prefer a manual upload without an agent? Visit the DropFiles website directly to upload HTML or Markdown content and get a shareable link through your browser — no account required.
+
+**Website**: <https://dropfiles.tokendealhub.com/>
+
 ### Features
 
 - One-shot upload of HTML or Markdown content to get a public URL
@@ -173,6 +179,12 @@ MIT
 ## 中文
 
 一个 AI agent 技能（兼容 [TRAE](https://trae.ai/)、Claude、Cursor 等任何支持 `SKILL.md` frontmatter 约定的 agent），用于将生成的 HTML 或 Markdown 内容上传到 DropFiles 服务，并返回一个公开可访问的分享链接。该服务免费、全球可访问，并托管在 Cloudflare 的边缘网络上。
+
+### 网页端
+
+不想通过 agent 上传？直接访问 DropFiles 网站，在浏览器中手动上传 HTML 或 Markdown 内容并获取分享链接，无需注册账号。
+
+**网站地址**：<https://dropfiles.tokendealhub.com/>
 
 ### 功能特性
 
