@@ -47,7 +47,7 @@ Invoke this skill whenever you want to:
 #### Example: Upload Markdown (no password)
 
 ```bash
-curl -X POST https://api.xiongan-company.com/api/v1/upload \
+curl -X POST https://dropfiles.tokendealhub.com/api/v1/upload \
   -H "Content-Type: application/json" \
   -d '{
     "content": "# Hello World\n\nThis is a shared Markdown document.",
@@ -60,7 +60,7 @@ curl -X POST https://api.xiongan-company.com/api/v1/upload \
 #### Example: Upload with a user-supplied password
 
 ```bash
-curl -X POST https://api.xiongan-company.com/api/v1/upload \
+curl -X POST https://dropfiles.tokendealhub.com/api/v1/upload \
   -H "Content-Type: application/json" \
   -d '{
     "content": "# Secret Report\n\nConfidential content.",
@@ -73,7 +73,7 @@ curl -X POST https://api.xiongan-company.com/api/v1/upload \
 #### Example: Upload with an auto-generated 6-digit password
 
 ```bash
-curl -X POST https://api.xiongan-company.com/api/v1/upload \
+curl -X POST https://dropfiles.tokendealhub.com/api/v1/upload \
   -H "Content-Type: application/json" \
   -d '{
     "content": "# Protected Document\n\nContent here.",
@@ -85,7 +85,7 @@ curl -X POST https://api.xiongan-company.com/api/v1/upload \
 
 ### API Reference
 
-- **Base URL**: `https://api.xiongan-company.com`
+- **Base URL**: `https://dropfiles.tokendealhub.com`
 - **Upload**: `POST /api/v1/upload`
 - **Metadata**: `GET /api/v1/info/{id}`
 - **Preview**: `https://dropfiles.tokendealhub.com/v/{id}`
@@ -217,7 +217,7 @@ git clone https://github.com/icexun/drop-files-skill.git
 #### 示例：上传 Markdown（无密码）
 
 ```bash
-curl -X POST https://api.xiongan-company.com/api/v1/upload \
+curl -X POST https://dropfiles.tokendealhub.com/api/v1/upload \
   -H "Content-Type: application/json" \
   -d '{
     "content": "# Hello World\n\nThis is a shared Markdown document.",
@@ -230,7 +230,7 @@ curl -X POST https://api.xiongan-company.com/api/v1/upload \
 #### 示例：使用用户自定义密码上传
 
 ```bash
-curl -X POST https://api.xiongan-company.com/api/v1/upload \
+curl -X POST https://dropfiles.tokendealhub.com/api/v1/upload \
   -H "Content-Type: application/json" \
   -d '{
     "content": "# Secret Report\n\nConfidential content.",
@@ -243,7 +243,7 @@ curl -X POST https://api.xiongan-company.com/api/v1/upload \
 #### 示例：使用自动生成的 6 位数字密码上传
 
 ```bash
-curl -X POST https://api.xiongan-company.com/api/v1/upload \
+curl -X POST https://dropfiles.tokendealhub.com/api/v1/upload \
   -H "Content-Type: application/json" \
   -d '{
     "content": "# Protected Document\n\nContent here.",
@@ -255,7 +255,7 @@ curl -X POST https://api.xiongan-company.com/api/v1/upload \
 
 ### API 参考
 
-- **基础地址**：`https://api.xiongan-company.com`
+- **基础地址**：`https://dropfiles.tokendealhub.com`
 - **上传**：`POST /api/v1/upload`
 - **元数据**：`GET /api/v1/info/{id}`
 - **预览**：`https://dropfiles.tokendealhub.com/v/{id}`

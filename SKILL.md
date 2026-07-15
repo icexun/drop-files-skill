@@ -17,14 +17,43 @@ Invoke this skill when the user wants to:
 
 ## API Endpoint
 
-- **Base URL**: `https://api.xiongan-company.com`
+- **Base URL**: `https://dropfiles.tokendealhub.com`
 - **Upload**: `POST /api/v1/upload`
 - **Metadata**: `GET /api/v1/info/{id}`
 - **Preview**: `https://dropfiles.tokendealhub.com/v/{id}`
 
 ## Upload Request
 
-Send a `POST` request to `https://api.xiongan-company.com/api/v1/upload` with `Content-Type: application/json`.
+**IMPORTANT: Always use `curl` to send the upload request.** The API is behind Cloudflare WAF which may block requests from other HTTP clients (e.g. Python urllib, Node fetch) with HTTP 403 (error code 1010). curl is the only reliably working client.
+
+Send a `POST` request to `https://dropfiles.tokendealhub.com/api/v1/upload` with `Content-Type: application/json`.
+
+### Handling Large Content
+
+When the content to upload is large (e.g. over 2KB) or contains special characters (quotes, backslashes, HTML tags, etc.), **do NOT inline the content in a shell command**. Instead, write the JSON payload to a temporary file first, then use `curl -d @file`:
+
+```bash
+# Step 1: Write JSON payload to a temp file (use Python or any method)
+python3 -c "
+import json
+payload = json.dumps({
+    'content': open('your_file.md').read(),
+    'type': 'markdown',
+    'expire': '7d',
+    'title': 'My Document'
+})
+with open('/tmp/dropfiles_payload.json', 'w') as f:
+    f.write(payload)
+"
+
+# Step 2: Upload using curl with file reference
+curl -X POST https://dropfiles.tokendealhub.com/api/v1/upload \
+  -H "Content-Type: application/json" \
+  -d @/tmp/dropfiles_payload.json
+
+# Step 3: Clean up
+rm /tmp/dropfiles_payload.json
+```
 
 ### Request Body
 
@@ -40,7 +69,7 @@ Send a `POST` request to `https://api.xiongan-company.com/api/v1/upload` with `C
 ### Example (no password — default)
 
 ```bash
-curl -X POST https://api.xiongan-company.com/api/v1/upload \
+curl -X POST https://dropfiles.tokendealhub.com/api/v1/upload \
   -H "Content-Type: application/json" \
   -d '{
     "content": "# Hello World\n\nThis is a shared Markdown document.",
@@ -53,7 +82,7 @@ curl -X POST https://api.xiongan-company.com/api/v1/upload \
 ### Example (with user-supplied password)
 
 ```bash
-curl -X POST https://api.xiongan-company.com/api/v1/upload \
+curl -X POST https://dropfiles.tokendealhub.com/api/v1/upload \
   -H "Content-Type: application/json" \
   -d '{
     "content": "# Secret Report\n\nConfidential content.",
@@ -66,7 +95,7 @@ curl -X POST https://api.xiongan-company.com/api/v1/upload \
 ### Example (with skill-generated 6-digit password)
 
 ```bash
-curl -X POST https://api.xiongan-company.com/api/v1/upload \
+curl -X POST https://dropfiles.tokendealhub.com/api/v1/upload \
   -H "Content-Type: application/json" \
   -d '{
     "content": "# Protected Document\n\nContent here.",
@@ -141,7 +170,10 @@ Common error codes:
    - Default: no password.
    - If the user explicitly provides a password, use it.
    - If the user asks for protection without providing a password, generate a random 6-digit numeric string and use it.
-4. Send the `POST /api/v1/upload` request with the chosen body.
+4. Send the upload request **using `curl`** (see "Upload Request" section above).
+   - For small content (< 2KB, no special characters): inline the JSON directly in the `curl -d` argument.
+   - For large content or content with special characters: write the JSON payload to a temp file, then use `curl -d @/tmp/dropfiles_payload.json`. Clean up the temp file afterwards.
+   - **Do NOT use Python urllib, Node fetch, or other HTTP clients** — they will be blocked by Cloudflare WAF (HTTP 403, error code 1010).
 5. On success, return the `url` (and `preview_url` if relevant) to the user. If a password was generated, prominently display it: `Generated password: XXXXXX`.
 6. On error, surface the `error.message` to the user and suggest fixes.
 
